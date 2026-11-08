@@ -1,0 +1,57 @@
+{
+  "$schema": "https://developers.reddit.com/schema/config-file.v1.json",
+  "name": "grid-daily",
+  "permissions": {
+    "redis": true,
+    "media": true,
+    "payments": true,
+    "reddit": true
+  },
+  "triggers": {
+    "onAppInstall": "/internal/triggers/on-app-install"
+  },
+  "server": {
+    "dir": "dist/server",
+    "entry": "index.cjs"
+  },
+  "post": {
+    "dir": "dist/client",
+    "entrypoints": {
+      "default": {
+        "entry": "index.html",
+        "height": "tall"
+      }
+    }
+  },
+  "payments": {
+    "productsFile": "products.json",
+    "endpoints": {
+      "fulfillOrder": "/internal/payments/fulfill"
+    }
+  },
+  "scheduler": {
+    "tasks": {
+      "daily-puzzle-reset": {
+        "endpoint": "/internal/scheduler/daily-puzzle-reset",
+        "cron": "0 0 * * *"
+      }
+    }
+  },
+  "menu": {
+    "items": [
+      {
+        "label": "Create Daily Grid Post",
+        "description": "Moderator action to post today's interactive 4x4 Grid puzzle.",
+        "location": "subreddit",
+        "forUserType": "moderator",
+        "endpoint": "/internal/mod/trigger-daily-post"
+      }
+    ]
+  },
+  "marketingAssets": {
+    "icon": "assets/icon.png"
+  },
+  "dev": {
+    "subreddit": "grid_daily_dev"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "products": [
+    {
+      "sku": "streak_shield_token",
+      "displayName": "Streak Shield Token",
+      "description": "Protects your daily puzzle streak from breaking if you miss a day",
+      "price": 50,
+      "accountingType": "CONSUMABLE"
+    },
+    {
+      "sku": "supporter_obsidian_theme",
+      "displayName": "Obsidian Supporter Theme",
+      "description": "Unlocks the Obsidian UI theme and supporter badge",
+      "price": 300,
+      "accountingType": "DURABLE"
+    },
+    {
+      "sku": "archive_pass_monthly",
+      "displayName": "30-Day Puzzle Archive Access",
+      "description": "Play all past daily puzzles on demand for 30 days",
+      "price": 200,
+      "accountingType": "VALID_FOR_30D"
+    }
+  ]
+}
