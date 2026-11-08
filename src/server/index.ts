@@ -215,21 +215,17 @@ async function submitDailyGridPost(subredditName: string) {
   const puzzle = getTodayPuzzle();
   return await reddit.submitCustomPost({
     subredditName,
-    title: `Daily Reddit Grid #${puzzle.dayNumber} — Find 4 Groups of 4!`,
+    title: `Daily Reddit Grid #${puzzle.dayNumber}: Find 4 Groups of 4!`,
     entry: 'default'
   });
 }
 
 // Handler for moderator context menu
 app.post('/internal/mod/trigger-daily-post', async (c) => {
-  const subredditName = context.subredditName || 'grid_daily_dev';
+  const subredditName = context.subredditName || 'PlayGridDaily';
 
   try {
-    const post = await reddit.submitCustomPost({
-      subredditName,
-      title: `Daily Reddit Grid #1 — Find 4 Groups of 4!`,
-      entry: 'default',
-    });
+    const post = await submitDailyGridPost(subredditName);
     console.log('Created post:', post.id);
     return c.json({ showToast: "Today's Daily Grid post has been published!" });
   } catch (err: any) {
